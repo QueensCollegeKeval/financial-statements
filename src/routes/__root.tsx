@@ -1,6 +1,6 @@
-import { HeadContent, Scripts, createRootRoute, Link } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import { createRootRoute, HeadContent, Link, Scripts } from '@tanstack/react-router'
+import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 
 import appCss from '../styles.css?url'
 
@@ -36,7 +36,17 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
 
-<nav className="flex gap-6 p-4">
+
+<div className="min-h-screen flex flex-col">
+  <header className="w-full">
+    <div className="max-w-6xl mx-auto px-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 py-5 border-b border-edge">
+        <Link to="/" className="text-lg font-semibold text-ink">
+          Kissena Baked Goods
+        </Link>
+
+        <nav className="flex flex-wrap gap-5 text-sm">
+
   <Link
     to="/"
     className="text-ink-soft hover:text-ink"
@@ -58,9 +68,29 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   >
     Disclosures
   </Link>
-</nav>
 
-        {children}
+        </nav>
+      </div>
+    </div>
+  </header>
+
+
+        
+<main className="w-full max-w-6xl mx-auto flex-1 px-6 py-10">
+  {children}
+</main>
+
+<footer className="w-full">
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="border-t border-edge py-8 text-sm text-ink-soft">
+      <p>Kissena Baked Goods Inc., Astoria, Queens, New York</p>
+      <p>© 20X5 Kissena Baked Goods Inc.</p>
+      <p>A fictional company used for accounting examples.</p>
+    </div>
+  </div>
+</footer>
+</div>
+
         <TanStackDevtools
           config={{
             position: 'bottom-right',
